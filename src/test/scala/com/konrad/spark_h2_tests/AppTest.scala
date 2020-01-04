@@ -14,11 +14,11 @@ class AppTest extends org.scalatest.FunSuite with BeforeAndAfterAll with Matcher
 
   override protected def beforeAll(): Unit = {
     super.beforeAll()
-    H2DatabaseCreator.createDatabase()
+    H2DatabaseCreator.createTables()
   }
 
   override protected def afterAll(): Unit = {
-    H2DatabaseCreator.dropDatabase()
+    H2DatabaseCreator.dropTables()
     super.afterAll()
   }
 

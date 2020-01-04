@@ -13,16 +13,15 @@ object H2DatabaseCreator extends LazyLogging {
   val inputDbConf = DatabaseConnectionSettings(H2DatabaseCreator.inputH2Url, "sa", "", "org.h2.Driver")
   val outputDbConf = DatabaseConnectionSettings(H2DatabaseCreator.outputH2Url, "sa", "", "org.h2.Driver")
 
-  def createDatabase(): Unit = {
-    logger.info("Creating test databases")
-
+  def createTables(): Unit = {
+    logger.info("Creating tables in test databases")
     RunScript.execute(inputH2Url, "sa", "", "classpath:createInputDatabase.sql", StandardCharsets.UTF_8, false)
     RunScript.execute(outputH2Url, "sa", "", "classpath:createOutputDatabase.sql", StandardCharsets.UTF_8, false)
     logger.info("Create scripts run successfully")
   }
 
-  def dropDatabase(): Unit = {
-    logger.info("Dropping all tables")
+  def dropTables(): Unit = {
+    logger.info("Dropping all tables from test databases")
     RunScript.execute(inputH2Url, "sa", "", "classpath:dropInputTables.sql", StandardCharsets.UTF_8, false)
     RunScript.execute(outputH2Url, "sa", "", "classpath:dropOutputTables.sql", StandardCharsets.UTF_8, false)
     logger.info("Tables dropped")
