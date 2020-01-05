@@ -8,10 +8,6 @@ import org.scalatest.BeforeAndAfterAll
 import org.scalatest.matchers.should.Matchers
 
 class AppTest extends org.scalatest.FunSuite with BeforeAndAfterAll with Matchers {
-  implicit val spark = SparkSession.builder.appName("test").master("local").getOrCreate
-
-  import spark.implicits._
-
   override protected def beforeAll(): Unit = {
     super.beforeAll()
     H2DatabaseCreator.createTables()
@@ -21,6 +17,9 @@ class AppTest extends org.scalatest.FunSuite with BeforeAndAfterAll with Matcher
     H2DatabaseCreator.dropTables()
     super.afterAll()
   }
+
+  implicit val spark = SparkSession.builder.appName("test").master("local").getOrCreate
+  import spark.implicits._
 
   test("should read students and save persons") {
     //when
