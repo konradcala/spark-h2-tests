@@ -51,8 +51,7 @@ pom.xml contains dependencies used in this project
             <scope>test</scope>
         </dependency>                
 ```
-##Application
-
+## Application
 Simple application reads rows from **student** table from input database. Dataset of students is transformed to dataset of persons which is saved into **person** table in output database.
 
 | Table | Column | Type |
