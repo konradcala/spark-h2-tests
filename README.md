@@ -113,7 +113,7 @@ and also for saving persons into output database
   }
 
 ```
-##Unit tests
+## Unit tests
 **AppTest** overwrites **beforeAll** and **afterAll** methods to prepare H2 test databases
 ```scala
 class AppTest extends org.scalatest.FunSuite with BeforeAndAfterAll with Matchers {
